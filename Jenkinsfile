@@ -6,13 +6,19 @@ pipeline {
             }
         }
     stages {
+        stage('Delete workspace before build starts') {
+            steps {
+                echo 'Deleting workspace'
+                deleteDir()
+                }
+            }  
         stage('git checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/o4edik/final-task.git']]])
 
             }
-        }
-        stage('Build') {
+        }  
+        stage('Create artifact') {
             steps {
                 sh 'mvn -B -DskipTests -Dcheckstyle.skip clean package'
                 }
