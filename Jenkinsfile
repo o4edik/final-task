@@ -6,9 +6,9 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/o4edik/final-task.git']]])
                 sh '''
                  cd $HOME
-                 mkdir petclinic
-                 cd petclinic
-                 git clone git@github.com:o4edik/final-task.git /home/petclinic
+                 mkdir final-task
+                 cd final-task
+                 git clone git@github.com:o4edik/final-task.git /home/final-task
                  '''
             }
         }
