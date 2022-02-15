@@ -10,6 +10,7 @@ pipeline {
         stage('create artifact') {
             steps {
                 sh '''
+                mvn install
                 ./mvnw package
                 java -jar target/*.jar
                 '''
