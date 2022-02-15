@@ -4,12 +4,7 @@ pipeline {
         stage('git checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/o4edik/final-task.git']]])
-                sh '''
-                 $PWD
-                 cd $HOME
-                 mkdir final-task
-                 git clone git@github.com:o4edik/final-task.git /home/final-task
-                 '''
+                sh '$PWD'
             }
         }
         stage('create artifact') {
