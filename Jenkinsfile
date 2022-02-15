@@ -1,8 +1,8 @@
 pipeline {
     agent { 
         docker { 
-            image ' maven:latest ' 
-            args ' -v $HOME/.m2:/root/.m2 '
+            image 'maven:latest' 
+            args '-v $HOME/.m2:/root/.m2'
             }
         }
     stages {
@@ -14,7 +14,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                
                 sh 'mvn install -Dcheckstyle.skip'
                 }
             }
