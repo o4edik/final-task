@@ -3,7 +3,7 @@ pipeline {
         docker { 
             image ' maven:latest ' 
             args ' -v $HOME/.m2:/root/.m2 '
-            } 
+            }
         }
     stages {
         stage('git checkout') {
@@ -21,4 +21,3 @@ pipeline {
         }
 
     } 
-}
