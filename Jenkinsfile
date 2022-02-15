@@ -13,13 +13,10 @@ pipeline {
                 mvn install -Dcheckstyle.skip
                 ./mvnw package
                 java -jar target/*.jar
+                cp target/*.jar ~/epam/DevOps_online_Kiev_2021Q4/m13/final-task
                 '''
             }
         }
-        stage('build') {
-            steps {
-                sh './mvnw spring-boot:run'
-            }
-        }
+
     } 
 }
