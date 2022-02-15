@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/o4edik/final-task.git']]])
                 sh 'git clone git@github.com:o4edik/final-task.git /home/petclinic'
             }
         }
