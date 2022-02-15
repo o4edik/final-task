@@ -9,10 +9,13 @@ pipeline {
         }
         stage('create artifact') {
             steps {
-                sh '''
-                mvn install -Dcheckstyle.skip
-                mvnw package -DskipTests
-                '''
+                dir('final-task') {
+                    sh 'mvn install -Dcheckstyle.skip'
+
+                }
+                dir ('.') {
+                    sh ' cp final-task/target/*.jar final-task/prod/prod.jar '
+                }
             }
         }
 
