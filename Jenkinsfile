@@ -10,7 +10,6 @@ pipeline {
         stage('create artifact') {
             steps {
                 sh '''
-                cd final-task
                 ./mvnw package
                 java -jar target/*.jar
                 '''
