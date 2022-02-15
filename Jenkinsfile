@@ -1,9 +1,9 @@
 pipeline {
-    agent { docker { image 'maven:3.8.4-openjdk-11-slim' } }
+    agent { docker { image 'maven:latest' } }
     stages {
         stage('git checkout') {
             steps {
-                sh 'git clone https://github.com/o4edik/petclinic.git https://github.com/o4edik/DevOps_online_Kiev_2021Q4/tree/master/m13/'
+                sh 'git clone git@github.com:o4edik/final-task.git /home/petclinic'
             }
         }
         stage('create artifact') {
