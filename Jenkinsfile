@@ -21,7 +21,16 @@ pipeline {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar'
             }
-        }  
+        }
+        stage('Copy artifact') {
+            steps {
+                script {
+                  step ([$class: 'CopyArtifact',
+                      projectName: 'Zip artifact',
+                      filter: 'target/*.jar',
+                      target: '/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/prod.jar']);
+            }
+        }    
     }
 
 } 
