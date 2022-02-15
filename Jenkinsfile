@@ -14,13 +14,9 @@ pipeline {
         }  
         stage('Create artifact') {
             steps {
-                dir ('final-task') {
-                sh 'mvn -B -DskipTests -Dcheckstyle.skip clean package'
-
-                }
-                
-                }
-            }
+            
+                sh 'mvn -B -DskipTests -Dcheckstyle.skip clean package'      
         }
+    }
 
-    } 
+} 
