@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn install -Dcheckstyle.skip'
+                sh './mvnw package  -Dcheckstyle.skip'
                 }
             }
         }
