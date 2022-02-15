@@ -14,8 +14,8 @@ pipeline {
         }  
         stage('Create artifact') {
             steps {
-            
-            }   sh 'mvn -B -DskipTests -Dcheckstyle.skip clean package'      
+                sh 'mvn -B -DskipTests -Dcheckstyle.skip clean package'
+            }         
         }
         stage('Zip artifact') {
             steps {
