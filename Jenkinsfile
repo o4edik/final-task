@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh '''
                 mvn install -Dcheckstyle.skip
-                cp target/*.jar ~/epam/DevOps_online_Kiev_2021Q4/m13/final-task
+                cp target/*.jar ~/epam/DevOps_online_Kiev_2021Q4/m13/final-task/
                 '''
             }
         }
