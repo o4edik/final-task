@@ -12,7 +12,7 @@ pipeline {
                 
                 sh 'mvn install -Dcheckstyle.skip'
                 dir ('.') {
-                    sh ' cp final-task/target/*.jar final-task/prod/prod.jar '
+                    sh ' cp target/*.jar final-task/prod/prod.jar '
                 }
             }
         }
