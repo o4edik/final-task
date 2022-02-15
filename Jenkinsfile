@@ -1,5 +1,10 @@
 pipeline {
-    agent { docker { image 'maven:latest' } }
+    agent { 
+        docker { 
+            image ' maven:latest ' 
+            args ' -v $HOME/.m2:/root/.m2 '
+            } 
+        }
     stages {
         stage('git checkout') {
             steps {
@@ -7,12 +12,10 @@ pipeline {
 
             }
         }
-        stage('create artifact') {
+        stage('Build') {
             steps {
                 
                 sh 'mvn install -Dcheckstyle.skip'
-                dir ('.') {
-                    sh ' cp target/*.jar /home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/prod.jar '
                 }
             }
         }
