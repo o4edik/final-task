@@ -19,7 +19,7 @@ pipeline {
             }
         stage('Copy artifact') {
             steps {
-                sh 'cp .m2/target/*.jar /home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod'
+                sh 'cp /root/.m2/target/*.jar /home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/prod.jar'
                 }
             }
         }
