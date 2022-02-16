@@ -23,6 +23,8 @@ pipeline {
                 copyArtifacts flatten: true, parameters: '*.jar', projectName: 'petclinic_pipe', selector: workspace(), target: '/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/'
             }
         }
+    }
+}        
     //     stage('Innit_prod_env_with_TF') {
     //        environment {
     //         prod_ip = ''
@@ -54,4 +56,3 @@ pipeline {
     
     // }
     // }
-}
