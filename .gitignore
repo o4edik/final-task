@@ -14,3 +14,9 @@ build/*
 _site/
 *.css
 !petclinic.css
+variables.tf
+.terraform.lock.hcl
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+
