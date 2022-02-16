@@ -41,6 +41,6 @@ pipeline {
         //         sh 'cd /var/lib/jenkins/workspace/petclinic_pipe/target'
             }
         }    
-    }
+    
 }
  
