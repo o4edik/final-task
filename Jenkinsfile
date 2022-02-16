@@ -38,7 +38,7 @@ pipeline {
         // }
         stage('Innit_prod_env_with_TF') {
             steps {
-                sh 'cd /home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod'
+                sh 'cd /target'
             }
         }    
     }
