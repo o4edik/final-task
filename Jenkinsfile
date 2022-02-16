@@ -18,7 +18,13 @@ pipeline {
             }
         }  
         stage('Create artifact') {
-            steps {
+            agent 
+        docker { 
+            image 'maven:latest' 
+            args '-v $HOME/.m2:/root/.m2'
+            }
+        }
+              steps {
                 sh 'mvn -B -DskipTests -Dcheckstyle.skip clean package'
             }         
         }
