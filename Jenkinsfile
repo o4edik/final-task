@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker { 
             image 'maven:latest' 
-            args '-v $HOME/.m2:/root/.m2'
+            // args '-v $HOME/.m2:/root/.m2'
             }
         }
         environment {
@@ -36,18 +36,18 @@ pipeline {
         //               target: '/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/']);
         //     }
         // }
-        stage('Innit_prod_env_with_TF') {
-            steps {
-                checkout scm
-                dir ('final-task/prod/') {
-                    withAWS(credentials: 'AWS_CREDS', region: 'us-east-2')
-                }
-                sh '''
-                terraform -init
-                terraform -apply --auto-approve
-                '''
-            }
-        }    
+        // stage('Innit_prod_env_with_TF') {
+        //     steps {
+        //         checkout scm
+        //         dir ('/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod') {
+        //             withAWS(credentials: 'AWS_CREDS', region: 'us-east  -2')
+        //         }
+        //         sh '''
+        //         terraform -init
+        //         terraform -apply --auto-approve
+        //         '''
+        //     }
+        // }    
     
 
  
