@@ -1,10 +1,10 @@
 pipeline {
-    agent { 
-        docker { 
-            image 'maven:latest' 
-            args '-v $HOME/.m2:/root/.m2'
-            }
-        }
+    agent { any }
+        // docker { 
+        //     image 'maven:latest' 
+        //     args '-v $HOME/.m2:/root/.m2'
+        //     }
+        // }
         environment {
             IMAGE_BASE = ''
             IMAGE_TAG = 'v$BUILD_NUMBER'
@@ -38,7 +38,7 @@ pipeline {
         // }
         stage('Innit_prod_env_with_TF') {
             steps {
-                sh 'cd /target'
+                sh 'cd /var/lib/jenkins/workspace/petclinic_pipe/target'
             }
         }    
     }
