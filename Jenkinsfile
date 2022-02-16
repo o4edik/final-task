@@ -1,10 +1,10 @@
 pipeline {
-    agent none
-        // docker { 
-        //     image 'maven:latest' 
-        //     args '-v $HOME/.m2:/root/.m2'
-        //     }
-        // }
+    agent {
+        docker { 
+            image 'maven:latest' 
+            args '-v $HOME/.m2:/root/.m2'
+            }
+        }
         environment {
             IMAGE_BASE = ''
             IMAGE_TAG = 'v$BUILD_NUMBER'
@@ -18,12 +18,6 @@ pipeline {
             }
         }  
         stage('Create artifact') {
-              agent {
-                 docker { 
-                   image 'maven:latest' 
-                   args '-v $HOME/.m2:/root/.m2'
-            }
-        }
               steps {
                 sh 'mvn -B -DskipTests -Dcheckstyle.skip clean package'
             }         
@@ -42,9 +36,9 @@ pipeline {
         //               target: '/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/']);
         //     }
         // }
-        stage('Innit_prod_env_with_TF') {
-            steps {
-                sh 'cd /var/lib/jenkins/workspace/petclinic_pipe/target'
+        // stage('Innit_prod_env_with_TF') {
+        //     steps {
+        //         sh 'cd /var/lib/jenkins/workspace/petclinic_pipe/target'
             }
         }    
     }
