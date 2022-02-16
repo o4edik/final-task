@@ -37,18 +37,18 @@ pipeline {
                 script {
                     prod_ip = sh(returnStdout: true, script: "terraform output -raw Prod_Env_publicIP").trim()
                 }
-                writeFile (file: '/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/ahosts.txt', text: '[prod]\n' + prod_ip + '\n')
+                writeFile (file: '/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/ahosts.txt', text: '[prod]\n' + Prod_server + ansible_host= + prod_ip + 'ansible_user=ubuntu' + 'ansible_ssh_private_key_file=/home/ed/awspemkeys/id_rsa_ec2.pem')
             }
 
         }
         stage('Copy artifact to AWS prod instance') {
               steps {
-                sh ''
+                sh 'scp -i /home/ed/awspemkeys/id_rsa_ec2.pem /home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/*.jar ubuntu@$prod_ip:~ '
             }         
         }
         stage('Deploy on prod env with Ansible') {
               steps {
-                sh ''
+                sh 'ansible-playbook deploy_prod.yml'
             }         
         }
     
