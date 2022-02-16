@@ -5,6 +5,11 @@ pipeline {
             args '-v $HOME/.m2:/root/.m2'
             }
         }
+        environment {
+            IMAGE_BASE = ''
+            IMAGE_TAG = 'v$BUILD_NUMBER'
+            IMAGE_NAME = '${env.IMAGE_BASE}:${env.IMAGE_TAG}'
+        }
     stages { 
         stage('git checkout') {
             steps {
@@ -22,13 +27,18 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar'
             }
         }
-        stage('Copy artifact') {
+        // stage('Copy artifact') {
+        //     steps {
+        //         script {
+        //           step ([$class: 'CopyArtifact',
+        //               projectName: 'petclinic_pipe',
+        //               filter: '*.jar',
+        //               target: '/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/']);
+        //     }
+        // }
+        stage('Innit_prod_env_with_TF') {
             steps {
-                script {
-                  step ([$class: 'CopyArtifact',
-                      projectName: 'petclinic_pipe',
-                      filter: 'target/*.jar',
-                      target: '/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod/']);
+                sh cd '/home/ed/epam/DevOps_online_Kiev_2021Q4/m13/final-task/prod'
             }
         }    
     }
