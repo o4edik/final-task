@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
         // docker { 
         //     image 'maven:latest' 
         //     args '-v $HOME/.m2:/root/.m2'
@@ -18,10 +18,10 @@ pipeline {
             }
         }  
         stage('Create artifact') {
-            agent 
-        docker { 
-            image 'maven:latest' 
-            args '-v $HOME/.m2:/root/.m2'
+              agent {
+                 docker { 
+                   image 'maven:latest' 
+                   args '-v $HOME/.m2:/root/.m2'
             }
         }
               steps {
@@ -48,5 +48,5 @@ pipeline {
             }
         }    
     }
-
+}
  
